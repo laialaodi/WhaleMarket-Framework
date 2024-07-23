@@ -7,10 +7,4 @@
  */
 void welcomeMessage();
 
-/**
- * @brief An Invalid Message
- *
- */
-void invalidMessage();
-
 #endif
