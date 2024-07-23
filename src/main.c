@@ -1,6 +1,7 @@
 #include "tools/hint.h"
 
-int main() {
+int main()
+{
     welcomeMessage();
     invalidMessage();
     return 0;
