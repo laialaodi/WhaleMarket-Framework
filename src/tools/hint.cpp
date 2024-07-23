@@ -1,8 +1,8 @@
+#include <iostream>
 #include "tools/hint.h"
 #include "tools/color.h"
-#include <stdio.h>
 
-static const char *BANNER = "\
+static const std::string BANNER = "\
 \t__          ___           _          __  __            _        _       _\n\
 \t\\ \\        / / |         | |        |  \\/  |          | |      | |     | |\n\
 \t \\ \\  /\\  / /| |__   __ _| | ___    | \\  / | __ _ _ __| | _____| |_    | |\n\
@@ -11,7 +11,7 @@ static const char *BANNER = "\
 \t    \\/  \\/   |_| |_|\\__,_|_|\\___|   |_|  |_|\\__,_|_|  |_|\\_\\___|\\__|   (_)\n\
 ";
 
-static const char *INVALID = "\
+static const std::string INVALID = "\
 \t  _____                           _   _       _   _\n\
 \t |_   _|                         | | (_)     | | | |\n\
 \t   | |    _ __   __   __   __ _  | |  _    __| | | |\n\
@@ -22,14 +22,19 @@ static const char *INVALID = "\
 
 void welcomeMessage()
 {
-    printf("\n%s%sWelcome to%s\n", BOLD, FRONT_RED, RESET);
-    printf("%s%s%s%s\n", FRONT_BLUE, BOLD, BANNER, RESET);
-    printf("%sThis is WinterCode Project for C-Beginners.%s\n\n", FRONT_PURPLE, RESET);
+    // printf("\n%s%sWelcome to%s\n", BOLD, FRONT_RED, RESET);
+    std::cout << std::endl << BOLD << FRONT_RED << "Welcome to" << RESET << std::endl;
+    // printf("%s%s%s%s\n", FRONT_BLUE, BOLD, BANNER, RESET);
+    std::cout << FRONT_BLUE << BOLD << BANNER << RESET << std::endl;
+    // printf("%sThis is WinterCode Project for C-Beginners.%s\n\n", FRONT_PURPLE, RESET);
+    std::cout << FRONT_PURPLE << "This is WinterCode Project for C-Beginners." << RESET << std::endl << std::endl;
 }
 
 void invalidMessage()
 {
-    printf("\n%s%s%s\a\n\n", FRONT_RED, INVALID, RESET);
-    printf("\n%s%sThis Function is Waiting For you to Implement ...%s\n\n",
-           FRONT_RED, BOLD, RESET);
+    // printf("\n%s%s%s\a\n\n", FRONT_RED, INVALID, RESET);
+    std::cout << std::endl << FRONT_RED << INVALID << RESET << "\a\n" << std::endl;
+    // printf("\n%s%sThis Function is Waiting For you to Implement ...%s\n\n",
+        //    FRONT_RED, BOLD, RESET);
+    std::cout << "\n" << FRONT_RED << BOLD << "This Function is Waiting For you to Implement ..." << RESET << "\n" << std::endl;
 }
