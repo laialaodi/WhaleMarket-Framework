@@ -1,22 +1,25 @@
-.PHONY: clean # 伪目标
+.PHONY = clean
+CXXFLAGS = -O2 -g -Wall -fmessage-length=0 -Iinclude
+CXX = g++
+OBJS = src/tools/hint.o src/main.o src/tools/color.o
 
-# 自定义环境变量
-CC = g++ # 指定编译器
+LIBS =
 
-CFLAGS = -I include # 指定头文件目录
-CFILES = $(shell find src -name "*.c") # 搜索所有的源文件
-OBJS = $(CFILES:.c=.o) # 所有的目标文件
-TARGET = main # 最终生成目标
+TARGET = main
 
-RM = -rm -f # 删除方式
-
-# 项目构建方式
 $(TARGET): $(OBJS)
-	$(CC) -o $(TARGET) $(OBJS)
+	$(CXX) -o $(TARGET) $(OBJS) $(LIBS)
 
-%o : %c
-	$(CC) -c $(CFLAGS) $< -o $@
+src/tools/hint.o: src/tools/hint.cpp
+	$(CXX) $(CXXFLAGS) -c src/tools/hint.cpp -o src/tools/hint.o
+
+src/tools/color.o: src/tools/color.cpp
+	$(CXX) $(CXXFLAGS) -c src/tools/color.cpp -o src/tools/color.o
+
+src/main.o: src/main.cpp
+	$(CXX) $(CXXFLAGS) -c src/main.cpp -o src/main.o
+
+all: $(TARGET)
 
 clean:
-	$(RM) $(OBJS) $(TARGET)
-
+	rm -f $(OBJS) $(TARGET)
